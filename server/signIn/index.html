@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Soundcloud Shuffle</title>
+    <meta name="description" content="A way to shuffle a Soundcloud playlist">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="385199390322-cpk8hk8pnmb7j53pmeptfcdpad8ftcgq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/javascript" src="bundle.js"></script>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      // console.log('Name: ' + profile.getName());
+      // console.log('Image URL: ' + profile.getImageUrl());
+      // console.log('Email: ' + profile.getEmail());
+      const token = googleUser.getAuthResponse().id_token;
+      const name = profile.getName();
+      const image = profile.getImageUrl();
+      const email = profile.getEmail();
+      const url = 'http://localhost:3000/sessions'
+      const params = {
+        token,
+        name,
+        image,
+        email,
+      }
+      axios.post(url, params);      
+      }
+    </script>
+  </body>
+</html>
