@@ -1,0 +1,19 @@
+.header {
+  margin-top: 0px;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  z-index: 5;
+  background-color: #00B2EE;
+  color: whitesmoke;
+}
+
+.info {
+  background-color: grey;
+  height: 1000px;
+  text-align: center;
+}
+
+.newSector {
+  height: 50px;
+}
